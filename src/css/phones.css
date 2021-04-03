@@ -1,0 +1,81 @@
+#phContent {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+.el_divider {
+  color: #c81623;
+}
+.phContent {
+  width: 1500px;
+  height: 1164px;
+  margin: 0 auto;
+}
+.phContent ul {
+  width: 1500px;
+  height: 582px;
+  float: left;
+}
+.phContent > ul > li {
+  width: 240px;
+  height: 502px;
+  float: left;
+  margin: 0 10px;
+  padding: 40px 20px;
+}
+.phContent > ul > li .imgBig {
+  width: 240px;
+  height: 240px;
+}
+.phContent > ul > li .imgSmall {
+  width: 24px;
+  height: 24px;
+  margin: 10px 5px 0 0;
+}
+.phContent > ul > li > p {
+  margin: 12px 0;
+}
+.phContent > ul > li > p:nth-child(5) {
+  font-size: 12px;
+  color: #666;
+}
+.phContent > ul > li .rmb1 {
+  color: red;
+  font-size: 12px;
+}
+.phContent > ul > li .rmb2 {
+  color: red;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.phContent > ul > li .rmb3 {
+  color: #666;
+  font-size: 12px;
+  text-decoration: line-through;
+  margin-left: 5px;
+}
+.phContent > ul > li > a:nth-child(4) {
+  font-size: 12px;
+  color: black;
+}
+.phContent > ul > li > a:nth-child(6) {
+  font-size: 12px;
+  font-weight: bolder;
+  color: #2272c8;
+}
+.phContent > ul > li .evaluate {
+  font-size: 12px;
+  color: #666;
+}
+.phContent > ul > li > .love {
+  font-size: 12px;
+  color: #ff6600;
+  border: 1px solid #ff6600;
+  padding: 2px 4px;
+  width: 63px;
+}
+.phContent > ul > li .pgContent {
+  color: #666;
+  font-size: 12px;
+  margin-left: 5px;
+}

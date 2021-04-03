@@ -1,0 +1,321 @@
+#slideshow-head {
+  width: 1200px;
+  height: 38px;
+  margin: 0 auto;
+}
+.slideshow-head-son {
+  width: 1200px;
+  height: 38px;
+  margin: 0 auto;
+}
+.slideshow-head-left {
+  width: 200px;
+  height: 38px;
+  float: left;
+  background-color: rgb(255, 128, 0);
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 12px 12px 0 0;
+}
+.slideshow-head-certen {
+  width: 780px;
+  height: 38px;
+  float: left;
+  position: relative;
+}
+.slideshow-head-certen > .cloud {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  width: 85px;
+  height: 38px;
+  background: url(../assets/imgs/cloud.gif) no-repeat;
+}
+.slideshow-head-certen ul {
+  width: 760px;
+  height: 38px;
+  margin: 0 10px;
+  position: absolute;
+}
+.slideshow-head-certen li {
+  width: 70px;
+  height: 38px;
+  float: left;
+  line-height: 38px;
+  font-size: 16px;
+  font-weight: bolder;
+  padding: 0 12px 0 13px;
+  color: #333333;
+}
+.slideshow-head-right {
+  width: 220px;
+  height: 38px;
+  float: left;
+  background-color: rgb(74, 74, 72);
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 12px 12px 0 0;
+}
+/*顶部快捷导航*/
+.shortcut {
+  height: 31px;
+  background-color: #f1f1f1;
+  line-height: 31px;
+}
+.shortcut li {
+  float: left;
+}
+
+#slideshow-certen {
+  height: 470px;
+}
+.slideshow-son {
+  width: 1200px;
+  height: 470px;
+  margin: 0 auto;
+}
+.slideshow-left {
+  width: 200px;
+  height: 470px;
+  float: left;
+  background-color: white;
+}
+.slideshow-left > ul {
+  margin: 0 10px;
+  padding: 0;
+}
+.slideshow-left > ul > li > a {
+  line-height: 31.5px;
+  margin: 0 6px;
+}
+.slideshow-left > ul > li > img {
+  width: 16px;
+  height: 16px;
+}
+.slideshow-certen {
+  width: 780px;
+  height: 470px;
+  float: left;
+  position: relative;
+}
+.slideshow-right {
+  width: 220px;
+  height: 470px;
+  float: left;
+  background-color: white;
+}
+.news {
+  height: 163px;
+  border: 1px solid #ccc;
+}
+.news-hd {
+  height: 32px;
+  /*dotted 点线  dashed  虚线*/
+  border-bottom: 1px dotted #ccc;
+  padding: 0 15px;
+  font-size: 16px;
+  line-height: 32px;
+}
+.news-hd a {
+  float: right;
+  font-family: "icomoon";
+}
+.news-bd {
+  padding: 10px 0 0 0px;
+}
+.news-bd li {
+  height: 23px;
+}
+.lifeservice {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 304px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.lifeservice > ul > li {
+  width: 71.6px;
+  height: 75px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-bottom: none;
+  float: left;
+}
+.lifeservice > ul > li img {
+  width: 28px;
+  width: 28px;
+  margin: 15px 21.8px 5px 21.8px;
+}
+
+#content {
+  margin: 0;
+  padding: 0;
+  height: 1272px;
+  background-color: #f1f1f1;
+}
+.content {
+  width: 1200px;
+  height: 1272px;
+  margin: 0 auto;
+}
+.cmdtTitle {
+  width: 1200px;
+  height: 70px;
+  float: left;
+}
+.title_l {
+  width: 595px;
+  height: 60px;
+  margin-top: 10px;
+  float: left;
+  background-color: white;
+  border-radius: 12px 12px 0 0;
+}
+.title_l > img {
+  width: 106px;
+  height: 30px;
+  margin: 15px 20px;
+  float: left;
+}
+.title_l > p {
+  width: 90px;
+  height: 60px;
+  font-size: 16px;
+  line-height: 60px;
+  color: black;
+  float: left;
+}
+.title_l > a {
+  font-size: 16px;
+  line-height: 60px;
+  margin-right: 10px;
+  float: right;
+}
+.title_l > .count_down {
+  float: left;
+}
+.title_l > .count_down > span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: black;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  line-height: 25px;
+  margin: 17.5px 0;
+}
+.title_l1 {
+  width: 595px;
+  height: 60px;
+  margin-top: 10px;
+  float: left;
+  background-color: white;
+  border-radius: 12px 12px 0 0;
+}
+.title_l1 > p {
+  font-size: 24px;
+  line-height: 60px;
+  color: black;
+  margin-left: 16px;
+  font-weight: bolder;
+  float: left;
+}
+.title_l1 > p > span {
+  font-size: 16px;
+  font-weight: normal;
+  color: rgb(255, 128, 0);
+  margin-left: 15px;
+  border: 1px solid rgb(255, 128, 0);
+}
+.title_l1 > a {
+  margin-left: 200px;
+  font-size: 16px;
+  line-height: 60px;
+  margin-right: 10px;
+  float: right;
+}
+.title_r {
+  width: 595px;
+  height: 60px;
+  margin: 10px 0 0 10px;
+  float: left;
+  background-color: white;
+  border-radius: 12px 12px 0 0;
+}
+.title_r p {
+  font-size: 24px;
+  line-height: 60px;
+  color: black;
+  margin-left: 16px;
+  font-weight: bolder;
+  float: left;
+}
+.title_r > p > span {
+  font-size: 16px;
+  font-weight: normal;
+  color: rgb(255, 128, 0);
+  margin-left: 15px;
+  border: 1px solid rgb(255, 128, 0);
+}
+.title_r a {
+  margin-left: 200px;
+  font-size: 16px;
+  line-height: 60px;
+  margin-right: 10px;
+  float: right;
+}
+.content ul {
+  width: 595px;
+  height: 248px;
+  float: left;
+  background-color: white;
+  border-radius: 0 0 12px 12px;
+}
+/* 规定属于其（ul）父元素(.content)的第3n{公式 (an + b)}个子元素(所有的商品右侧栏)的每个 ul的样式 */
+.content > ul:nth-child(3n) {
+  margin-left: 10px;
+}
+.content > ul > li {
+  width: 170px;
+  height: 248px;
+  float: left;
+  margin: 0 0 0 20px;
+}
+.content > ul > li > img {
+  width: 150px;
+  height: 150px;
+  margin: 0 10px 10px;
+}
+.content > ul > li > p {
+  margin-bottom: 5px;
+}
+.content > ul > li > p:nth-child(2) {
+  margin-left: 10px;
+}
+.content > ul > li .rmb1 {
+  color: red;
+  font-size: 12px;
+}
+.content > ul > li .rmb2 {
+  color: red;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.content > ul > li .rmb3 {
+  color: #666;
+  font-size: 12px;
+  text-decoration: line-through;
+  margin-left: 5px;
+}
+.content > ul > li .pgContent {
+  color: #666;
+  font-size: 12px;
+  margin-left: 5px;
+}

@@ -1,0 +1,121 @@
+/* 导航栏模块样式 */
+#navigation-bar {
+  height: 31px;
+  background-color: #f1f1f1;
+  line-height: 31px;
+}
+
+#navigation-bar li {
+  float: left;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+@font-face {
+  font-family: "icomoon";
+  src: url("./assets/fonts/icomoon.eot?7kkyc2");
+  src: url("./assets/fonts/icomoon.eot?7kkyc2#iefix")
+      format("embedded-opentype"),
+    url("./assets/fonts/icomoon.ttf?7kkyc2") format("truetype"),
+    url("./assets/fonts/icomoon.woff?7kkyc2") format("woff"),
+    url("./assets/fonts/icomoon.svg?7kkyc2#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.fr .icomoon {
+  font-family: "icomoon";
+  font-size: 16px;
+  line-height: 26px;
+}
+.head {
+  width: 1200px;
+  margin: 0 auto;
+}
+.style-blue {
+  color: rgb(110, 178, 253);
+}
+.spacer {
+  width: 1px;
+  height: 12px;
+  background-color: #666;
+  margin: 9px 12px 0;
+}
+/* 底部模块样式 */
+#footer {
+  margin: 0;
+  padding: 0;
+  height: 465px;
+  background-color: #f1f1f1;
+}
+.footer {
+  width: 1200px;
+  height: 385px;
+  margin: 0 auto;
+  padding: 30px 0 50px 0;
+}
+.mod_service {
+  width: 1200px;
+  height: 80px;
+  border-bottom: 1px solid #ccc;
+}
+.mod_service ul li {
+  float: left;
+  width: 265px;
+  height: 50px;
+  padding-left: 35px;
+}
+.mod_service ul li img {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+}
+.service_txt h4 {
+  font-size: 16px;
+  margin: 5px 0 5px 0;
+}
+.service_txt {
+  float: left;
+}
+.service_txt p {
+  margin: 0;
+  font-size: 13px;
+}
+.mod_help {
+  width: 1200px;
+  height: 185px;
+  border-bottom: 1px solid #ccc;
+}
+.mod_help dl {
+  float: left;
+  width: 200px;
+}
+.mod_help dl dt {
+  font-size: 16px;
+  margin: 10px 0 10px 40px;
+}
+.mod_help dl dd {
+  margin-left: 40px;
+}
+.mod_help dl dd a {
+  font-size: 13px;
+}
+.mod_copyright {
+  width: 1200px;
+  text-align: center;
+  padding-top: 20px;
+}
+.links {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.links a {
+  margin: 0 3px;
+}
+.copyright {
+  line-height: 20px;
+  font-size: 13px;
+}

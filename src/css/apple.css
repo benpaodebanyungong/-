@@ -1,0 +1,245 @@
+.details {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.crumb_wrap {
+  width: 1200px;
+  height: 25px;
+}
+.crumb_wrap a {
+  margin-right: 10px;
+  font-size: 12px;
+}
+.product_intro {
+  width: 1200px;
+  height: 590px;
+}
+.preview_wrap {
+  width: 400px;
+  height: 590px;
+  float: left;
+}
+.preview_img {
+  position: relative;
+  height: 398px;
+  border: 1px solid #ccc;
+}
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: #fede4f;
+  opacity: 0.5;
+  border: 1px solid #ccc;
+  cursor: move;
+  /* 
+  悬停上去信息框mask盖住了img标签，mouseover事件失效，mouseout事件生效，信息框消失。
+  信息框消失后鼠标又正好悬停在img标签上，mouseover事件生效，mouseout事件失效，信息框显示
+  一直无限循环就会看到一直闪烁的现象。
+  解决方案：pointer-events: none
+  */
+  pointer-events: none;
+}
+.big {
+  position: absolute;
+  left: 410px;
+  top: 0;
+  width: 500px;
+  height: 500px;
+  z-index: 999;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  pointer-events: none;
+}
+.big img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.preview_list {
+  position: relative;
+  height: 60px;
+  margin-top: 60px;
+}
+.list_item {
+  width: 320px;
+  height: 60px;
+  margin: 0 auto;
+}
+.list_item li {
+  float: left;
+  width: 60px;
+  height: 60px;
+}
+.list_item img {
+  float: left;
+  width: 56px;
+  height: 56px;
+  border: 2px solid transparent;
+}
+.list_item img.current {
+  border-color: #ff6600;
+}
+.arrow_prev,
+.arrow_next {
+  position: absolute;
+  top: 15px;
+  width: 22px;
+  height: 32px;
+}
+.arrow_prev {
+  left: 0;
+  background: url(../assets/imgs/arrow-prev.png) no-repeat;
+}
+.arrow_next {
+  right: 0;
+  background: url(../assets/imgs/arrow-next.png) no-repeat;
+}
+
+.itemInfo_wrap {
+  width: 718px;
+  height: 590px;
+  float: right;
+  font-size: 12px;
+}
+.sku_name {
+  height: 30px;
+  font-size: 16px;
+  font-weight: bolder;
+}
+.appleNew {
+  height: 32px;
+  color: #e12228;
+}
+.summary > dl {
+  overflow: hidden;
+}
+.summary dt,
+.summary dd {
+  float: left;
+}
+.summary dt {
+  width: 60px;
+  padding-left: 10px;
+  line-height: 36px;
+}
+.summary_price,
+.summary_promotion {
+  position: relative;
+  padding: 10px 0;
+  background-color: #fee9eb;
+}
+.price {
+  font-size: 24px;
+  color: #e12228;
+}
+.summary_price a {
+  color: #c81623;
+}
+.remark {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+.summary_promotion {
+  padding-top: 0;
+}
+.summary_promotion dd {
+  width: 450px;
+  line-height: 36px;
+}
+.summary_promotion em {
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  background-color: #c81623;
+  text-align: center;
+  line-height: 22px;
+  color: #fff;
+}
+.summary_support dd {
+  line-height: 36px;
+}
+.choose_color a {
+  display: inline-block;
+  width: 80px;
+  height: 41px;
+  background-color: #f7f7f7;
+  border: 1px solid #ededed;
+  text-align: center;
+  line-height: 41px;
+}
+.summary a.current {
+  border-color: #ff6600;
+}
+.choose_version,
+.choose_memory,
+.choose_type {
+  margin: 10px 0;
+}
+.choose_version a,
+.choose_memory a,
+.choose_type a {
+  display: inline-block;
+  height: 32px;
+  padding: 0 12px;
+  background-color: #f7f7f7;
+  border: 1px solid #ededed;
+  text-align: center;
+  line-height: 32px;
+}
+.choose_btns {
+  margin-top: 20px;
+}
+.product_detail {
+  width: 1200px;
+  height: 2100px;
+  margin-bottom: 50px;
+  font-size: 12px;
+}
+.aside {
+  width: 196px;
+  float: left;
+}
+.tab_con li {
+  width: 164px;
+  height: 228px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+.tab_con li img {
+  width: 164px;
+  height: 118.25px;
+}
+.tab_con li h5 {
+  /*超出的文字省略号显示*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  font-weight: 400;
+}
+.aside_price {
+  font-weight: 700;
+  text-align: left;
+  margin: 10px 0;
+}
+.detail {
+  width: 984px;
+  margin-left: 20px;
+  float: left;
+}
+.item_info {
+  padding: 20px 0 0 20px;
+}
+.item_info li {
+  line-height: 22px;
+}
+.more {
+  float: right;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
