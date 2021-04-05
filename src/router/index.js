@@ -3,6 +3,7 @@ import Index from '../views/Index.vue'
 import Order from '../views/Order.vue'
 import Car from '../views/Car.vue'
 import Register from '../views/Register.vue'
+import Login from '../views/Login.vue'
 import Phones from '../views/Phones.vue'
 import Apple from '../views/Apple.vue'
 
@@ -31,6 +32,11 @@ const routes = [
     path:'/register',
     name:'Register',
     component:Register
+  },
+  {
+    path:'/login',
+    name:'Login',
+    component:Login
   },
   {
     path:'/Phones',

@@ -14,8 +14,10 @@
             >
             <li>
               <span :style="{ color: '#666' }">购买前请</span>
-              <a href="javascript:;"> <span class="style-blue"> 登录 </span></a>
-              <router-link to="/register" target="_blank"
+              <router-link to="/login">
+                <span class="style-blue"> 登录 </span></router-link
+              >
+              <router-link to="/register"
                 ><span class="style-blue">免费注册</span></router-link
               >
             </li>

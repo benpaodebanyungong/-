@@ -1,10 +1,25 @@
 .line {
-  height: 47px;
+  height: 38px;
   border-bottom: 2px solid #ff6600;
 }
 .nav {
   width: 1200px;
-  height: 47px;
+  height: 38px;
   margin: 0 auto;
-  background-color: burlywood;
+}
+.nav > ul {
+  width: 1160px;
+  height: 38px;
+  padding: 0 20px;
+}
+.nav > ul li {
+  width: 80px;
+  height: 38px;
+  float: left;
+  line-height: 38px;
+  font-size: 18px;
+  font-weight: bolder;
+  padding: 0 12px 0 13px;
+  margin: 0 20px;
+  color: #333333;
 }
