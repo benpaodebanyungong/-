@@ -5,7 +5,10 @@
       <div class="carHead">
         <h4>全部商品99</h4>
         <div class="right">
-          已选商品：<span class="style-red">9.99</span>&nbsp;
+          已选商品（不含运费）：<span class="style-red">{{
+            comsumption.toFixed(2)
+          }}</span
+          >&nbsp;
           <el-button size="mini" type="danger" :disabled="true">结算</el-button>
         </div>
       </div>
@@ -52,13 +55,7 @@
             class="checkAll"
             ><span :style="{ 'font-size': '12px' }">全选</span></el-checkbox
           >
-          <tr>
-            <td>删除</td>
-            <td>移入收藏夹</td>
-            <td>分享</td>
-            <td>已选择商品 <span>0</span>件</td>
-            <td>合计：</td>
-            <td>999.99</td>
+          <tr class="tr2">
             <td>
               <el-button
                 type="danger"
@@ -67,6 +64,17 @@
                 >结算</el-button
               >
             </td>
+            <td>{{ comsumption.toFixed(2) }}</td>
+            <td>合计（不含运费）：</td>
+            <td>
+              已选择商品 <span class="cmdtnum">{{ cmdtNum }}</span
+              >件
+            </td>
+          </tr>
+          <tr class="tr1">
+            <td><a href="javascript:;">删除</a></td>
+            <td><a href="javascript:;">移入收藏夹</a></td>
+            <td><a href="javascript:;">分享</a></td>
           </tr>
         </div>
       </div>
@@ -85,6 +93,9 @@ export default {
       checkedcommodise: [],
       commodise: ["1", "2", "3", "4"],
       isIndeterminate: false,
+      // 商品数据
+      comsumption: 0,
+      cmdtNum: 0,
     };
   },
   methods: {

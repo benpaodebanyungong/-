@@ -72,6 +72,7 @@
   line-height: 50px;
   font-size: 12px;
   background-color: #f1f1f1;
+  margin-bottom: 20px;
 }
 .checkAll {
   padding-left: 15px;
@@ -79,8 +80,35 @@
 .carBottom > tr {
   float: right;
 }
-.carBottom > tr td:nth-child(1) {
-  width: 292px;
-  padding-left: 50px;
-  background-color: blue;
+.carBottom > .tr2 {
+  width: 580px;
+  height: 50px;
+  margin-left: 310px;
+}
+.carBottom > .tr2 td {
+  float: right;
+}
+.carBottom > .tr1 td:nth-child(1) {
+  width: 62px;
+}
+.carBottom > .tr1 td:nth-child(2) {
+  width: 95px;
+}
+.carBottom > .tr1 td:nth-child(3) {
+  width: 50px;
+}
+.carBottom > .tr2 td:nth-child(4) {
+  width: 140px;
+  margin-right: 40px;
+}
+.carBottom > .tr2 td:nth-child(2) {
+  color: #ff4400;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 0 8px;
+}
+.carBottom .cmdtnum {
+  font-size: 18px;
+  color: #ff4400;
+  padding: 0 5px;
 }
