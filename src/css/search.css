@@ -28,33 +28,13 @@
 }
 .shopcar {
   position: absolute;
-  top: 25px;
+  top: 35px;
   right: 64px;
-  width: 138px;
+  width: 132px;
   height: 34px;
   border: 1px solid rgb(255, 128, 0);
   border-radius: 5px;
   background-color: #f7f7f7;
   line-height: 34px;
   text-align: center;
-}
-.car {
-  font-family: "icomoon";
-  color: rgb(255, 128, 0);
-}
-.arrow {
-  font-family: "icomoon";
-}
-.count {
-  position: absolute;
-  top: -5px;
-  /*应该是左侧对齐 文字才能往右走显示*/
-  left: 100px;
-  background-color: #e60012;
-  height: 14px;
-  padding: 0 3px;
-  line-height: 14px;
-  color: #fff;
-  /*border-radius: 左上角 右上角  右下角  左下角;*/
-  border-radius: 7px 7px 7px 0;
 }

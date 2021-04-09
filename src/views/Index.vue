@@ -136,7 +136,7 @@
           <div class="news">
             <div class="news-hd">
               Love购快报
-              <a href="javascript:;">更多</a>
+              <a href="javascript:;">更多<i class="el-icon-arrow-right"></i></a>
             </div>
             <div class="news-bd">
               <ul>

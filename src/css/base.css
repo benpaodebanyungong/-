@@ -31,3 +31,14 @@ a {
 a:hover {
   color: rgb(255, 128, 0);
 }
+
+.style-orange {
+  color: rgb(255, 128, 0);
+}
+
+/* 修改element弹框按钮 */
+.confirmButtonClass {
+  color: #fff !important;
+  background-color: #ff8000 !important;
+  border-color: #ff8000 !important;
+}

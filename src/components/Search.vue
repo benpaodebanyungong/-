@@ -26,11 +26,11 @@
         </el-row>
       </div>
       <div class="shopcar">
-        <router-link to="/car"
-          ><a href="javascript:;"
-            ><i class="car"> </i>&nbsp;我的购物车<i class="arrow">  </i></a
-          ><i class="count">{{ num }}</i></router-link
-        >
+        <router-link to="/car">
+          <el-badge :value="num" :max="99" class="item" type="danger">
+            <i class="el-icon-shopping-cart-full"></i>&nbsp;我的购物车
+          </el-badge>
+        </router-link>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@ export default {
   name: "Search",
   data() {
     return {
-      num: 99,
+      num: 100,
       inpSearch: "",
     };
   },

@@ -15,10 +15,10 @@
             <li>
               <span :style="{ color: '#666' }">购买前请</span>
               <router-link to="/login">
-                <span class="style-blue"> 登录 </span></router-link
+                <span class="style-orange"> 登录 </span></router-link
               >
               <router-link to="/register"
-                ><span class="style-blue">免费注册</span></router-link
+                ><span class="style-orange">免费注册</span></router-link
               >
             </li>
           </div>
@@ -28,22 +28,27 @@
             >
             <li class="spacer"></li>
             <li>
-              <a href="javsscript:;">我的Love购<i class="icomoon"></i></a>
+              <a href="javsscript:;"
+                >我的Love购<i class="el-icon-arrow-down"></i
+              ></a>
             </li>
             <li class="spacer"></li>
             <li><a href="javsscript:;">Love购会员</a></li>
             <li class="spacer"></li>
             <li>
-              <a href="javsscript:;">关注Love购<i class="icomoon"></i></a>
+              <a href="javsscript:;"
+                >关注Love购<i class="el-icon-arrow-down"></i
+              ></a>
             </li>
             <li class="spacer"></li>
             <li>
-              <a href="javsscript:;">网站导航<i class="icomoon"></i></a>
+              <a href="javsscript:;"
+                >网站导航<i class="el-icon-arrow-down"></i
+              ></a>
             </li>
           </div>
-        </div>
-      </div></el-affix
-    >
+        </div></div
+    ></el-affix>
     <router-view></router-view>
     <!-- 底部模块的制作 end -->
     <footer id="footer">
@@ -140,10 +145,20 @@
         </div>
         <div class="mod_copyright">
           <div class="links">
-            <el-button type="text" @click="openAbout">关于我们</el-button>
-            |<el-button type="text" @click="openContact">联系我们</el-button> |
-            联系客服 | 商家入驻 | 营销中心 | 手机Love购 | 友情链接 | 销售联盟 |
-            Love购社区 | Love公益 | English Site | 与您联系
+            <el-button
+              type="text"
+              @click="openAbout"
+              :style="{ color: '#ff8000' }"
+              >关于我们</el-button
+            >
+            |<el-button
+              type="text"
+              @click="openContact"
+              :style="{ color: '#ff8000' }"
+              >联系我们</el-button
+            >
+            | 联系客服 | 商家入驻 | 营销中心 | 手机Love购 | 友情链接 | 销售联盟
+            | Love购社区 | Love公益 | English Site | 与您联系
           </div>
           <div class="copyright">
             地址:广东省中山市电子科技大学中山学院&emsp;邮编:528400&emsp;电话:400-123-4000&emsp;传真:010-12345678&emsp;邮箱:1348237773@qq.com
@@ -166,15 +181,19 @@ export default {
   },
   methods: {
     openAbout() {
-      this.$alert("<p>&emsp;LZH</p>", "关于我们", {
+      this.$alert("<p>LZH</p>", "关于我们", {
         confirmButtonText: "确定",
         dangerouslyUseHTMLString: true,
+        type: "success",
+        confirmButtonClass: "confirmButtonClass",
       });
     },
     openContact() {
-      this.$alert("<p>&emsp;扫右下方二维码即可添加微信！</p>", "联系我们", {
+      this.$alert("<p>扫右下方二维码即可添加微信！</p>", "联系我们", {
         confirmButtonText: "确定",
         dangerouslyUseHTMLString: true,
+        type: "success",
+        confirmButtonClass: "confirmButtonClass",
       });
     },
   },

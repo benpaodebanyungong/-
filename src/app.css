@@ -25,22 +25,14 @@
   font-weight: normal;
   font-style: normal;
 }
-.fr .icomoon {
-  font-family: "icomoon";
-  font-size: 16px;
-  line-height: 26px;
-}
 .head {
   width: 1200px;
   margin: 0 auto;
 }
-.style-blue {
-  color: rgb(110, 178, 253);
-}
 .spacer {
   width: 1px;
   height: 12px;
-  background-color: #666;
+  background-color: black;
   margin: 9px 12px 0;
 }
 /* 底部模块样式 */
