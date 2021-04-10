@@ -1,7 +1,38 @@
 <template>
   <div id="shoppingCar">
     <search></search>
-    <div class="shoppingCar">
+    <div class="cmdtNone" v-show="isNone">
+      <!-- 面包导航栏 -->
+      <div class="nav">
+        <div class="nav_left">
+          <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>我的Love购</el-breadcrumb-item>
+            <el-breadcrumb-item>我的购物车</el-breadcrumb-item>
+          </el-breadcrumb>
+        </div>
+        <div class="nav_right">
+          <p>
+            购物车帮您一次性完成批量购买与付款，下单更便捷，付款更简单！<a
+              href="javascript:;"
+              class="style-orange"
+              >如何使用购物车</a
+            >
+          </p>
+        </div>
+      </div>
+      <div class="ps">
+        <p>您的购物车还是空的，赶紧行动吧！您可以：</p>
+        <p>看看 <a href="javascript:;" class="style-orange">我的收藏夹</a></p>
+        <p>
+          看看
+          <router-link to="/order" class="style-orange"
+            >已经购买的宝贝</router-link
+          >
+        </p>
+      </div>
+    </div>
+    <div class="shoppingCar" v-show="isShow">
       <div class="carHead">
         <h4>全部商品99</h4>
         <div class="right">
@@ -59,7 +90,7 @@
           </el-checkbox-group>
           <div class="cmdtRight">
             <ul v-for="index in commodise.length" :key="index">
-              <li>123</li>
+              <li>{{ commodise[index - 1] }}</li>
             </ul>
           </div>
         </div>
@@ -106,20 +137,27 @@ export default {
     return {
       checkAll: false,
       checkedcommodise: [],
+      chooseArr: [],
       isNever: false,
+      isNone: false,
+      isShow: true,
       isBackout: true,
       commodise: [
-        {
-          img: require("../assets/imgs/测试.jpg"),
-          content:
-            "百草味精制猪肉脯零食特产小吃靖江特色风味肉干肉片网红休闲食品",
-          type: "口味：精制猪肉脯155g（原味）",
-          oldPrice: "￥39.8",
-          newPrice: "￥23.9",
-          num: 1,
-          allPrice: "23.9",
-        },
-        {},
+        // {
+        //   img: require("../assets/imgs/测试.jpg"),
+        //   content:
+        //     "百草味精制猪肉脯零食特产小吃靖江特色风味肉干肉片网红休闲食品",
+        //   type: "口味：精制猪肉脯155g（原味）",
+        //   oldPrice: "￥39.8",
+        //   newPrice: "￥23.9",
+        //   num: 1,
+        //   allPrice: "23.9",
+        // },
+        1,
+        2,
+        3,
+        4,
+        5,
       ],
       isAble: true,
       // 商品数据
@@ -150,6 +188,13 @@ export default {
     handleCheckedcommodiseChange(value) {
       let checkedCount = value.length;
       this.checkAll = checkedCount === this.commodise.length;
+      // 将用户选择的值降序后传递给数组chooseArr
+      function up(a, b) {
+        return b - a;
+      }
+      this.chooseArr = value.sort(up);
+      // console.log(this.chooseArr);
+      // console.log(this.chooseArr[0]);
       // console.log(value); //[] index[1,2]
       if (checkedCount == 0) {
         this.isAble = true;
@@ -202,6 +247,38 @@ export default {
       }
       // 部分选择状态
       else {
+        this.$confirm("确定要删除这些宝贝吗?", "！该操作不可逆", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          confirmButtonClass: "confirmButtonClass",
+          type: "warning",
+        })
+          .then(() => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+              duration: 1500,
+              showClose: true,
+            });
+            // 真删除（删除数据）
+            for (let i = 0; i < this.chooseArr.length; i++) {
+              this.commodise.splice(this.chooseArr[i] - 1, 1);
+            }
+            // 多选框恢复没选中状态
+            // this.checkAll = false;
+            this.checkedcommodise = [];
+          })
+          .catch(() => {
+            this.$message({
+              type: "warning",
+              message: "已取消删除",
+              duration: 1500,
+              showClose: true,
+            });
+            // 多选框恢复没选中状态
+            // this.checkAll = false;
+            this.checkedcommodise = [];
+          });
       }
     },
     backout() {

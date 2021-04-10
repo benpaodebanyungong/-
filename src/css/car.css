@@ -1,3 +1,43 @@
+/* 无商品购物车界面 */
+.cmdtNone {
+  width: 1200px;
+  height: 300px;
+  margin: 20px auto 30px;
+}
+.cmdtNone .nav {
+  width: 1200px;
+  height: 20px;
+}
+.cmdtNone > .nav > .nav_left {
+  width: 230px;
+  height: 20px;
+  line-height: 20px;
+  float: left;
+}
+.cmdtNone > .nav > .nav_right {
+  width: 470px;
+  height: 20px;
+  line-height: 20px;
+  float: right;
+}
+.cmdtNone > .nav > .nav_right p {
+  font-size: 12px;
+}
+.cmdtNone .ps {
+  width: 1044px;
+  height: 90px;
+  background: url(../assets/imgs/shopping_car.png) no-repeat 40px 86px;
+  padding: 88px 0 100px 156px;
+}
+.cmdtNone > .ps p {
+  font-size: 12px;
+}
+.cmdtNone > .ps p:nth-child(1) {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* 商品购物车界面 */
 .shoppingCar {
   width: 1200px;
   margin: 0 auto;
