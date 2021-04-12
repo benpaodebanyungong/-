@@ -13,10 +13,12 @@
         </div>
         <div class="nav_right">
           <p>
-            购物车帮您一次性完成批量购买与付款，下单更便捷，付款更简单！<a
-              href="javascript:;"
-              class="style-orange"
-              >如何使用购物车</a
+            购物车帮您一次性完成批量购买与付款，下单更便捷，付款更简单！
+            <el-button
+              type="text"
+              @click="openAboutCar"
+              :style="{ color: '#ff8000', 'font-size': '12px' }"
+              >如何使用购物车？</el-button
             >
           </p>
         </div>
@@ -51,6 +53,7 @@
             v-model="checkAll"
             @change="handleCheckAllChange"
             class="checkAll"
+            :disabled="allDiabled"
             ><span :style="{ 'font-size': '12px' }">全选</span></el-checkbox
           >
           <tr>
@@ -80,7 +83,7 @@
             class="el_checkbox_group"
           >
             <el-checkbox
-              v-for="index in commodise.length"
+              v-for="index in $store.state.commodise.length"
               :label="index"
               :key="index"
               :style="{ display: 'block', margin: '0' }"
@@ -89,8 +92,81 @@
             >
           </el-checkbox-group>
           <div class="cmdtRight">
-            <ul v-for="index in commodise.length" :key="index">
-              <li>{{ commodise[index - 1] }}</li>
+            <ul v-for="index in $store.state.commodise.length" :key="index">
+              <li>
+                <router-link to="/phones"
+                  ><img
+                    class="small"
+                    :src="$store.state.commodise[index - 1].img"
+                    @mouseover="open(index)"
+                    @mouseout="close(index)"
+                    alt=""
+                /></router-link>
+                <div class="big" v-show="isBig(index)">
+                  <img :src="$store.state.commodise[index - 1].img" alt="" />
+                </div>
+              </li>
+              <li>
+                <router-link to="/phones">{{
+                  $store.state.commodise[index - 1].content
+                }}</router-link>
+                <p class="payment">
+                  <el-tooltip
+                    content="支持信用卡支付"
+                    placement="bottom-start"
+                    effect="light"
+                  >
+                    <img src="../assets/imgs/xcard.png" />
+                  </el-tooltip>
+                  <el-tooltip
+                    content="支持微信支付"
+                    placement="bottom-start"
+                    effect="light"
+                  >
+                    <img src="../assets/imgs/WeChat.png" />
+                  </el-tooltip>
+                  <el-tooltip
+                    content="支持支付宝支付"
+                    placement="bottom-start"
+                    effect="light"
+                  >
+                    <img src="../assets/imgs/zhifubao.png" />
+                  </el-tooltip>
+                </p>
+              </li>
+              <li>{{ $store.state.commodise[index - 1].type }}</li>
+              <li>
+                <p class="rmb1">
+                  ￥{{ $store.state.commodise[index - 1].oldPrice.toFixed(2) }}
+                </p>
+                <p class="rmb2">
+                  ￥{{ $store.state.commodise[index - 1].newPrice.toFixed(2) }}
+                </p>
+              </li>
+              <li>
+                <el-input-number
+                  size="mini"
+                  v-model="$store.state.commodise[index - 1].num"
+                  :style="{ width: '100px' }"
+                  @change="handleChange"
+                  :min="1"
+                  :max="$store.state.commodise[index - 1].maxNum"
+                ></el-input-number>
+                <p>限量{{ $store.state.commodise[index - 1].maxNum }}件</p>
+              </li>
+              <li>
+                ￥{{
+                  (
+                    $store.state.commodise[index - 1].newPrice *
+                    $store.state.commodise[index - 1].num
+                  ).toFixed(2)
+                }}
+              </li>
+              <li>
+                <p><a href="javascript:;">移入收藏夹</a></p>
+                <p><a href="javascript:;" @click="del(index)">删除</a></p>
+                <p><a href="javascript:;">相识宝贝</a></p>
+              </li>
             </ul>
           </div>
         </div>
@@ -100,6 +176,7 @@
           v-model="checkAll"
           @change="handleCheckAllChange"
           class="checkAll"
+          :disabled="allDiabled"
           ><span :style="{ 'font-size': '12px' }">全选</span></el-checkbox
         >
         <tr class="tr2">
@@ -129,6 +206,7 @@
 </template>
   
 <script>
+import LoginVue from "../../../../web前端/Vue/vue-router-dev/examples/auth-flow/components/Login.vue";
 import Search from "../components/Search.vue";
 export default {
   components: { Search },
@@ -138,27 +216,12 @@ export default {
       checkAll: false,
       checkedcommodise: [],
       chooseArr: [],
+      big: -1,
+      allDiabled: false,
       isNever: false,
       isNone: false,
       isShow: true,
       isBackout: true,
-      commodise: [
-        // {
-        //   img: require("../assets/imgs/测试.jpg"),
-        //   content:
-        //     "百草味精制猪肉脯零食特产小吃靖江特色风味肉干肉片网红休闲食品",
-        //   type: "口味：精制猪肉脯155g（原味）",
-        //   oldPrice: "￥39.8",
-        //   newPrice: "￥23.9",
-        //   num: 1,
-        //   allPrice: "23.9",
-        // },
-        1,
-        2,
-        3,
-        4,
-        5,
-      ],
       isAble: true,
       // 商品数据
       comsumption: 0,
@@ -167,10 +230,38 @@ export default {
     };
   },
   methods: {
+    isBig(index) {
+      if (this.big === index) return true;
+      return false;
+    },
+    open(index) {
+      this.big = index;
+    },
+    close(index) {
+      this.big = -1;
+    },
+    handleChange() {
+      // 全选状态下
+      if (this.checkAll) {
+        this.comsumption = 0;
+        for (let i = 0; i < this.$store.state.commodise.length; i++) {
+          this.comsumption +=
+            this.$store.state.commodise[i].newPrice *
+            this.$store.state.commodise[i].num;
+        }
+      } else {
+        this.comsumption = 0;
+        for (let i = 0; i < this.chooseArr.length; i++) {
+          this.comsumption +=
+            this.$store.state.commodise[this.chooseArr[i] - 1].newPrice *
+            this.$store.state.commodise[this.chooseArr[i] - 1].num;
+        }
+      }
+    },
     handleCheckAllChange(val) {
       let index = 1;
       let arr = [];
-      for (let i = 0; i < this.commodise.length; i++) {
+      for (let i = 0; i < this.$store.state.commodise.length; i++) {
         arr.push(index);
         index++;
       }
@@ -180,14 +271,23 @@ export default {
       arr = [];
       // console.log(val); //ture false
       if (val) {
+        this.cmdtNum = this.$store.state.commodise.length;
+        for (let i = 0; i < this.$store.state.commodise.length; i++) {
+          this.comsumption +=
+            this.$store.state.commodise[i].newPrice *
+            this.$store.state.commodise[i].num;
+        }
         this.isAble = false;
       } else {
+        this.cmdtNum = 0;
+        this.comsumption = 0;
         this.isAble = true;
       }
     },
     handleCheckedcommodiseChange(value) {
       let checkedCount = value.length;
-      this.checkAll = checkedCount === this.commodise.length;
+      this.cmdtNum = value.length;
+      this.checkAll = checkedCount === this.$store.state.commodise.length;
       // 将用户选择的值降序后传递给数组chooseArr
       function up(a, b) {
         return b - a;
@@ -198,9 +298,60 @@ export default {
       // console.log(value); //[] index[1,2]
       if (checkedCount == 0) {
         this.isAble = true;
+        this.comsumption = 0;
       } else {
         this.isAble = false;
+        // 每点击一次就计算一次最终价格，保证数据的实时更新
+        this.comsumption = 0;
+        for (let i = 0; i < this.chooseArr.length; i++) {
+          // console.log(this.$store.state.commodise[this.chooseArr[i] - 1].newPrice);
+          // console.log(this.$store.state.commodise[this.chooseArr[i] - 1].num);
+          this.comsumption +=
+            this.$store.state.commodise[this.chooseArr[i] - 1].newPrice *
+            this.$store.state.commodise[this.chooseArr[i] - 1].num;
+          // console.log(this.comsumption);
+        }
       }
+    },
+    del(index) {
+      this.$confirm("确定要删除这些宝贝吗?", "！该操作不可逆", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        confirmButtonClass: "confirmButtonClass",
+        type: "warning",
+      })
+        .then(() => {
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+            duration: 1500,
+            showClose: true,
+          });
+          // 真删除（删除数据）
+          this.$store.state.commodise.splice(index - 1, 1);
+          // 更改购物车的数量显示
+          this.$store.state.carNum = this.$store.state.commodise.length;
+          // 多选框恢复没选中状态
+          this.checkAll = false;
+          this.checkedcommodise = [];
+          // 内容全部删除过后 显示购物车为空组件
+          if (this.$store.state.commodise.length === 0) {
+            this.isNone = true;
+            this.isShow = false;
+          }
+          // 价格清空
+          this.comsumption = 0;
+          // 商品数量清空
+          this.cmdtNum = 0;
+        })
+        .catch(() => {
+          this.$message({
+            type: "warning",
+            message: "已取消删除",
+            duration: 1500,
+            showClose: true,
+          });
+        });
     },
     deleteAll() {
       // 无选择状态
@@ -209,7 +360,7 @@ export default {
           confirmButtonText: "确定",
           confirmButtonClass: "confirmButtonClass",
           type: "warning",
-        });
+        }).catch((action) => {});
       }
       // 全选状态下
       else if (this.checkAll == true) {
@@ -230,8 +381,17 @@ export default {
             this.isBackout = false;
             // 多选框恢复没选中状态
             this.checkAll = false;
+            // 价格清空
+            this.comsumption = 0;
+            // 商品数量清空
+            this.cmdtNum = 0;
             // 显示撤销组件
             this.isNever = true;
+            this.deleteNum = this.$store.state.commodise.length;
+            //禁用全选框
+            this.allDiabled = true;
+            // 禁用结算按钮
+            this.isAble = true;
           })
           .catch(() => {
             this.$message({
@@ -240,9 +400,6 @@ export default {
               duration: 1500,
               showClose: true,
             });
-            // 多选框恢复没选中状态
-            this.checkAll = false;
-            this.checkedcommodise = [];
           });
       }
       // 部分选择状态
@@ -262,11 +419,17 @@ export default {
             });
             // 真删除（删除数据）
             for (let i = 0; i < this.chooseArr.length; i++) {
-              this.commodise.splice(this.chooseArr[i] - 1, 1);
+              this.$store.state.commodise.splice(this.chooseArr[i] - 1, 1);
             }
+            // 更改购物车的数量显示
+            this.$store.state.carNum = this.$store.state.commodise.length;
             // 多选框恢复没选中状态
             // this.checkAll = false;
             this.checkedcommodise = [];
+            // 价格清空
+            this.comsumption = 0;
+            // 商品数量清空
+            this.cmdtNum = 0;
           })
           .catch(() => {
             this.$message({
@@ -275,9 +438,6 @@ export default {
               duration: 1500,
               showClose: true,
             });
-            // 多选框恢复没选中状态
-            // this.checkAll = false;
-            this.checkedcommodise = [];
           });
       }
     },
@@ -285,6 +445,10 @@ export default {
       this.isNever = false;
       // 恢复假删除
       this.isBackout = true;
+      //恢复全选框
+      this.allDiabled = false;
+      //恢复结算按钮
+      this.isAble = false;
       // 多选框恢复没选中状态
       this.checkAll = false;
       this.checkedcommodise = [];
@@ -294,6 +458,18 @@ export default {
         showClose: true,
         message: "您已经成功恢复删除宝贝",
       });
+    },
+    openAboutCar() {
+      this.$alert(
+        "<p>一、将宝贝加入购物车</p><p>二、查看购物车</p><p>三、管理购物车</p><p>四、确认购买</p>",
+        "关于购物车",
+        {
+          confirmButtonText: "确定",
+          dangerouslyUseHTMLString: true,
+          type: "success",
+          confirmButtonClass: "confirmButtonClass",
+        }
+      ).catch((action) => {});
     },
   },
 };

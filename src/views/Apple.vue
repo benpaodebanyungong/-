@@ -43,7 +43,7 @@
         </div>
         <div class="itemInfo_wrap">
           <div class="sku_name">
-            Apple iPhone 6s（A1700）64G玫瑰金色 移动通信电信4G手机
+            Apple iPhone 11 64G 白色 移动联通电信4G全网通手机
           </div>
           <div class="appleNew">
             推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返
@@ -52,29 +52,35 @@
             <dl class="summary_price">
               <dt>价格</dt>
               <dd>
-                <i class="price"
+                <span class="price"
                   >￥{{
                     (
                       cmdtNum *
                       (worth + colorW + versionW + memoryW + typeW)
                     ).toFixed(2)
                   }}
-                </i>
-                <a href="javascript:;">降价通知</a>
-                <div class="remark">累计评价612188</div>
+                </span>
+                <span class="oldPrice">￥{{ oldPrice.toFixed(2) }}</span>
+                <span class="max"
+                  >每个账户限量<span>{{ maxNum }}</span
+                  >件</span
+                >
+                <div class="remark">
+                  <a href="#product_detail">累计评价612188</a>
+                </div>
               </dd>
             </dl>
             <dl class="summary_promotion">
               <dt>促销</dt>
               <dd>
                 <em>加购价</em>
-                满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换
-                购热销商品 详情 >
+                满9999.00另加20.00元，或满19999.00另加30.00元，或满29999.00另加40.00元，即可在购物车换
+                购热销商品 <a href="#product_detail">详情</a> >
               </dd>
             </dl>
             <dl class="summary_support">
               <dt>支持</dt>
-              <dd>以旧换新，闲置手机回收 4G套餐超值抢 礼品购</dd>
+              <dd>以旧换新，闲置手机回收, 信用卡支付, 微信支付, 支付宝支付</dd>
             </dl>
             <dl class="choose_color">
               <dt>选择颜色</dt>
@@ -126,17 +132,20 @@
                 v-model="cmdtNum"
                 controls-position="right"
                 @change="handleChange"
-                :min="0"
-                :max="99"
+                :min="1"
+                :max="maxNum"
+                :disabled="isbuy"
               ></el-input-number>
-              <el-button type="danger">加入购物车</el-button>
-              <el-button type="danger">立即购买</el-button>
+              <el-button type="danger" @click="carAdd" :disabled="isbuy"
+                >加入购物车</el-button
+              >
+              <el-button type="danger" :disabled="isbuy">立即购买</el-button>
             </div>
           </div>
         </div>
       </div>
       <!-- 产品细节模块 product_detail	 -->
-      <div class="product_detail">
+      <div class="product_detail" id="product_detail">
         <div class="aside">
           <el-tabs type="border-card">
             <el-tab-pane label="推荐品牌">
@@ -202,7 +211,7 @@
             </el-tab-pane>
             <el-tab-pane label="规格与包装">规格与包装</el-tab-pane>
             <el-tab-pane label="售后保障">售后保障</el-tab-pane>
-            <el-tab-pane label="商品评价">商品评价</el-tab-pane>
+            <el-tab-pane label="商品评价"> 商品评价</el-tab-pane>
             <el-tab-pane label="手机社区">手机社区</el-tab-pane>
           </el-tabs>
         </div>
@@ -214,14 +223,20 @@
 <script>
 import Navigation from "../components/Navigation.vue";
 import Search from "../components/Search.vue";
+import { ElMessage } from "element-plus";
 import { reactive } from "vue";
 export default {
   components: { Search, Navigation },
   name: "Car",
   data() {
     return {
+      isbuy: true,
+      // 商品数据
       cmdtNum: 1,
-      worth: 5299.99,
+      worth: 5299.9,
+      oldPrice: 9999.9,
+      maxNum: 20,
+      // 选择样式
       colorW: 0,
       versionW: 0,
       memoryW: 0,
@@ -264,6 +279,17 @@ export default {
       event.target.classList.add("current");
       this.colorW = changeWorth;
       this.colorName = event.target.innerText;
+      // 加入购物车和立即购买按钮是否禁用
+      if (
+        this.colorName !== "" &&
+        this.versionName !== "" &&
+        this.memoryName !== "" &&
+        this.typeName !== ""
+      ) {
+        this.isbuy = false;
+      } else {
+        this.isbuy = true;
+      }
     },
     // 选择版本事件
     chVersion(changeWorth) {
@@ -274,6 +300,16 @@ export default {
       event.target.classList.add("current");
       this.versionW = changeWorth;
       this.versionName = event.target.innerText;
+      if (
+        this.colorName !== "" &&
+        this.versionName !== "" &&
+        this.memoryName !== "" &&
+        this.typeName !== ""
+      ) {
+        this.isbuy = false;
+      } else {
+        this.isbuy = true;
+      }
     },
     // 选择规格事件
     chMemory(changeWorth) {
@@ -284,6 +320,16 @@ export default {
       event.target.classList.add("current");
       this.memoryW = changeWorth;
       this.memoryName = event.target.innerText;
+      if (
+        this.colorName !== "" &&
+        this.versionName !== "" &&
+        this.memoryName !== "" &&
+        this.typeName !== ""
+      ) {
+        this.isbuy = false;
+      } else {
+        this.isbuy = true;
+      }
     },
     // 购买方式事件
     chType(changeWorth) {
@@ -294,6 +340,44 @@ export default {
       event.target.classList.add("current");
       this.typeW = changeWorth;
       this.typeName = event.target.innerText;
+      if (
+        this.colorName !== "" &&
+        this.versionName !== "" &&
+        this.memoryName !== "" &&
+        this.typeName !== ""
+      ) {
+        this.isbuy = false;
+      } else {
+        this.isbuy = true;
+      }
+    },
+    // 加入购物车事件
+    carAdd() {
+      let obj = {
+        img: require("../assets/imgs/s3.png"),
+        content: "Apple iPhone 11 64G 白色 移动联通电信4G全网通手机",
+        type:
+          "选择：" +
+          this.colorName +
+          " " +
+          this.versionName +
+          " " +
+          this.memoryName +
+          " " +
+          this.typeName,
+        oldPrice: this.oldPrice,
+        newPrice:
+          this.worth + this.colorW + this.versionW + this.memoryW + this.typeW,
+        maxNum: this.maxNum,
+        num: this.cmdtNum,
+      };
+      this.$store.commit("commodiseAdd", obj);
+      ElMessage.success({
+        message: "恭喜你，宝贝已经加入购物车",
+        type: "success",
+        duration: 1500,
+        showClose: true,
+      });
     },
   },
   setup() {

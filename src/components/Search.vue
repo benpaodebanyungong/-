@@ -27,7 +27,12 @@
       </div>
       <div class="shopcar">
         <router-link to="/car">
-          <el-badge :value="num" :max="99" class="item" type="danger">
+          <el-badge
+            :value="$store.state.carNum"
+            :max="99"
+            class="item"
+            type="danger"
+          >
             <i class="el-icon-shopping-cart-full"></i>&nbsp;我的购物车
           </el-badge>
         </router-link>
@@ -41,7 +46,6 @@ export default {
   name: "Search",
   data() {
     return {
-      num: 100,
       inpSearch: "",
     };
   },

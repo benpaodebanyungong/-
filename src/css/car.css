@@ -75,33 +75,28 @@
   padding-right: 5px;
 }
 .carCenter > .title > tr td:nth-child(1) {
-  width: 292px;
-  padding-left: 50px;
-  background-color: blue;
+  width: 267px;
+  padding-left: 75px;
 }
 .carCenter > .title > tr td:nth-child(2) {
   width: 212px;
-  background-color: blueviolet;
 }
 .carCenter > .title > tr td:nth-child(3) {
   width: 130px;
-  background-color: blue;
 }
 .carCenter > .title > tr td:nth-child(4) {
-  width: 120px;
-  background-color: blueviolet;
+  width: 134px;
+  padding-left: 36px;
 }
 .carCenter > .title > tr td:nth-child(5) {
-  width: 140px;
-  background-color: blue;
+  width: 130px;
 }
 .carCenter > .title > tr td:nth-child(6) {
-  width: 149px;
-  background-color: blueviolet;
+  width: 109px;
 }
 .carCenter > .center {
   width: 1200px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .carCenter > .center > .el_checkbox_group {
   float: left;
@@ -122,13 +117,97 @@
   height: 82px;
   padding: 20px 0;
 }
+.carCenter > .center > .cmdtRight ul li {
+  float: left;
+  font-size: 12px;
+}
+.carCenter > .center > .cmdtRight ul li .small {
+  width: 80px;
+  height: 80px;
+}
+.carCenter > .center > .cmdtRight ul li .big {
+  position: absolute;
+  top: -140px;
+  left: 90px;
+  width: 250px;
+  height: 250px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.carCenter > .center > .cmdtRight ul li .big img {
+  width: 240px;
+  height: 240px;
+  margin: 5px;
+}
+.carCenter > .center > .cmdtRight ul li:nth-child(1) {
+  width: 80px;
+  position: relative;
+}
+.carCenter > .center > .cmdtRight ul li:nth-child(2) {
+  width: 226px;
+  padding-right: 45px;
+  margin-left: 10px;
+}
+.carCenter > .center > .cmdtRight ul li .payment {
+  margin-top: 30px;
+}
+.carCenter > .center > .cmdtRight ul li .payment img {
+  width: 16px;
+  height: 16px;
+  float: left;
+  margin-right: 5px;
+}
+.carCenter > .center > .cmdtRight ul li .payment img:nth-child(1) {
+  height: 11px;
+  padding-top: 3px;
+}
+.carCenter > .center > .cmdtRight ul li:nth-child(3) {
+  width: 172px;
+  color: #9c9c9c;
+  padding-right: 40px;
+}
+.carCenter > .center > .cmdtRight ul li:nth-child(4) {
+  width: 130px;
+}
+.carCenter > .center > .cmdtRight ul li .rmb1 {
+  color: #9c9c9c;
+  text-decoration: line-through;
+}
+.carCenter > .center > .cmdtRight ul li .rmb2 {
+  font-weight: bolder;
+  color: #3c3c3c;
+  font-size: 14px;
+}
+.carCenter > .center > .cmdtRight ul li:nth-child(5) {
+  width: 170px;
+}
+.carCenter > .center > .cmdtRight ul li:nth-child(5) p {
+  width: 100px;
+  margin-top: 5px;
+  text-align: center;
+}
+.carCenter > .center > .cmdtRight ul li:nth-child(6) {
+  width: 130px;
+  font-weight: bolder;
+  color: #ff4400;
+  font-size: 14px;
+}
+.carCenter > .center > .cmdtRight ul li:nth-child(7) {
+  width: 105px;
+}
+.carCenter > .center > .cmdtRight ul li:nth-child(7) p {
+  margin-bottom: 5px;
+}
 .carBottom {
   width: 1200px;
   height: 50px;
   line-height: 50px;
   font-size: 12px;
   background-color: #f1f1f1;
+  border-radius: 10px;
   margin-bottom: 20px;
+  overflow: hidden;
 }
 .checkAll {
   padding-left: 15px;

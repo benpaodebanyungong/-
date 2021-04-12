@@ -186,7 +186,7 @@ export default {
         dangerouslyUseHTMLString: true,
         type: "success",
         confirmButtonClass: "confirmButtonClass",
-      });
+      }).catch((action) => {});
     },
     openContact() {
       this.$alert("<p>扫右下方二维码即可添加微信！</p>", "联系我们", {
@@ -194,7 +194,7 @@ export default {
         dangerouslyUseHTMLString: true,
         type: "success",
         confirmButtonClass: "confirmButtonClass",
-      });
+      }).catch((action) => {});
     },
   },
   setup() {},
