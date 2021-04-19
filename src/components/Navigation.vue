@@ -14,7 +14,7 @@
   
 <script>
 export default {
-  name: "Car",
+  name: "Navigation",
   data() {
     return {
       narNameArr: [

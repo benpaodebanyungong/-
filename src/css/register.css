@@ -56,10 +56,10 @@
 .reg_form ul li {
   margin-bottom: 20px;
 }
-.reg_form ul li:nth-child(3) {
+.reg_form ul li:nth-child(4) {
   margin-bottom: 5px;
 }
-.reg_form ul li:nth-child(4) {
+.reg_form ul li:nth-child(5) {
   margin-bottom: 10px;
 }
 .reg_form ul li label {
@@ -134,4 +134,13 @@
 }
 .copyright {
   line-height: 20px;
+}
+/* 验证码 */
+#canvas {
+  vertical-align: middle;
+  box-sizing: border-box;
+  border: 2px solid #ff8000;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 5px;
 }

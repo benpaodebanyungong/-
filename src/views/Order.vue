@@ -1,13 +1,15 @@
 <template>
   <div>
-    <!-- <router-link to="/order/search"></router-link> -->
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
+    <search></search>
     <p>我是订单界面</p>
   </div>
 </template>
   
 <script>
+import Search from "../components/Search.vue";
 export default {
+  components: { Search },
   name: "Order",
   data() {
     return {};

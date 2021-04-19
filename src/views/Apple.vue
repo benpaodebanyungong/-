@@ -204,8 +204,8 @@
                     >查看更多参数<i class="el-icon-arrow-down"></i
                   ></a>
                 </p>
-                <img src="../assets/imgs/detail_img1.jpg" alt="" />
                 <img src="../assets/imgs/detail_img2.jpg" alt="" />
+                <img src="../assets/imgs/detail_img1.jpg" alt="" />
                 <img src="../assets/imgs/detail_img3.jpg" alt="" />
               </div>
             </el-tab-pane>

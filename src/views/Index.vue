@@ -417,9 +417,9 @@ export default {
         require("../assets/imgs/commodity3.jpg"),
       ],
       informationArr1: [
-        { name: "我是嘻嘻哈哈", price: "16.80", oldprice: "56.80" },
-        { name: "我是嘻嘻哈哈", price: "29.90", oldprice: "69.90" },
-        { name: "我是嘻嘻哈哈", price: "35.60", oldprice: "82.50" },
+        { name: "二手电视", price: "1666.80", oldprice: "5666.80" },
+        { name: "二手音响", price: "129.90", oldprice: "169.90" },
+        { name: "整箱沙琪玛", price: "35.60", oldprice: "82.50" },
       ],
       pgBarArr1: [25, 33, 47],
       // 商品内容 第一栏右侧
@@ -472,7 +472,7 @@ export default {
       minute: "记",
       second: "时",
     });
-    let inputTime = +new Date("2021-4-08 20:00:00"); // 返回的是用户输入时间总的毫秒数
+    let inputTime = +new Date("2021-4-18 20:00:00"); // 返回的是用户输入时间总的毫秒数
     countDown(); // 我们先调用一次这个函数，防止第一次刷新页面有空白
     // 2. 开启定时器
     let clear = setInterval(countDown, 1000); //过了一秒钟后回调函数

@@ -35,11 +35,21 @@ export default createStore({
           num: 1,
         },
       ],
+    user:[{
+      userName:'帅气的华',
+      userTelephone:'13599721590',
+      userPassword:'@lzh123123',
+    }],
+    isUser:false,
   },
   mutations: {
     commodiseAdd(state,obj){
       state.commodise.push(obj);
       state.carNum = state.commodise.length;
+    },
+    userAdd(state,obj){
+      state.user.push(obj);
+      console.log(state.user);
     }
   },
   actions: {

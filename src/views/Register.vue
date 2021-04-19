@@ -20,6 +20,26 @@
           <form action="">
             <ul>
               <li>
+                <label for="">用户名：</label>
+                <!-- 输入框 -->
+                <el-input
+                  placeholder="请输入用户名"
+                  clearable
+                  maxlength="8"
+                  v-model="names"
+                  @blur="isName"
+                  class="inp"
+                ></el-input>
+                <!-- 结果提醒 -->
+                <span :class="[NsRight ? 'success' : 'error']" v-show="NsShow">
+                  <!-- 正确错误提醒 -->
+                  <i
+                    :class="[NsRight ? 'el-icon-success' : 'el-icon-error']"
+                  ></i
+                  >{{ inpNs }}
+                </span>
+              </li>
+              <li>
                 <label for="">手机号：</label>
                 <!-- 输入框 -->
                 <el-input
@@ -44,18 +64,24 @@
                 </span>
               </li>
               <li>
-                <label for="">短信验证码：</label>
+                <label for="">验证码：</label>
                 <!-- 输入框 -->
                 <el-input
-                  placeholder="请输入短信验证码"
+                  placeholder="请输入验证码"
                   clearable
                   maxlength="6"
                   v-model="message"
                   @blur="isMsg"
                   class="inp"
-                  oninput="value = value.replace(/[^\d]/g,'')"
+                  oninput="value = value.replace(/[\u4E00-\u9FA5]/g,'')"
                 ></el-input>
                 <!-- 正确错误结果提醒 -->
+                <canvas
+                  id="canvas"
+                  width="100"
+                  height="30"
+                  @click="iscanvas"
+                ></canvas>
                 <span
                   :class="[msgRight ? 'success' : 'error']"
                   v-show="msgShow"
@@ -143,10 +169,16 @@
   
 <script>
 import { reactive } from "vue";
+import Registerjs from "../js/register.js";
 export default {
   name: "Register",
   data() {
     return {
+      names: "",
+      NsShow: false,
+      NsRight: false,
+      inpNs: "",
+
       phones: "",
       phsShow: false,
       phsRight: false,
@@ -174,14 +206,30 @@ export default {
       pswWeak: false,
       pswCenter: false,
       pswStrong: false,
+
+      // 初始验证栏
+      verification: [],
     };
   },
   methods: {
+    isName() {
+      if (this.names.length <= 8 && this.names.length >= 1) {
+        this.NsShow = true;
+        this.NsRight = true;
+        this.inpNs = "输入正确!";
+      } else {
+        this.NsShow = true;
+        this.NsRight = false;
+        this.inpNs = "格式错误，请输入用户名!";
+      }
+      // 每更改一次，就对按钮状态进行判断
+      this.isDisabled();
+    },
     isPhones() {
       if (this.phones.length == 11) {
         this.phsShow = true;
         this.phsRight = true;
-        this.inpPhs = "输入格式正确!";
+        this.inpPhs = "输入正确!";
       } else {
         this.phsShow = true;
         this.phsRight = false;
@@ -191,14 +239,18 @@ export default {
       this.isDisabled();
     },
     isMsg() {
-      if (this.message.length == 6) {
+      if (this.message === this.verification.join("")) {
         this.msgShow = true;
         this.msgRight = true;
-        this.inpMsg = "输入格式正确";
+        this.inpMsg = "输入正确";
+      } else if (this.message.length === 0) {
+        this.msgShow = true;
+        this.msgRight = false;
+        this.inpMsg = "验证码不能为空";
       } else {
         this.msgShow = true;
         this.msgRight = false;
-        this.inpMsg = "格式错误，请输入6位的短信验证码!";
+        this.inpMsg = "验证码错误";
       }
       this.isDisabled();
     },
@@ -264,7 +316,7 @@ export default {
       } else {
         this.pswShow = true;
         this.pswRight = true;
-        this.inpPsw = "输入格式正确";
+        this.inpPsw = "输入正确";
         // 当先写入第二次密码，后写入第一次密码，对第二次已显示的结果进行新的判断
         if (this.againpsw === this.password && this.againpsw.length !== 0) {
           // this.agShow = true;
@@ -296,6 +348,11 @@ export default {
       this.checked = e.target.checked;
       this.isDisabled();
     },
+    // 验证码点击事件
+    iscanvas() {
+      Registerjs.verification(this.verification);
+      // console.log(this.verification);
+    },
     isDisabled() {
       // 当所有的条件都为真，激活按钮
       if (
@@ -316,7 +373,7 @@ export default {
         // console.log(this.phsShow,this.phsRight,this.msgShow,this.msgRight,this.pswShow,this.pswRight,this.agShow,this.agRight,this.checked);
       }
     },
-    // 提交按钮
+    // 完成注册按钮
     submit() {
       this.$confirm("保存信息, 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -328,6 +385,15 @@ export default {
             type: "success",
             message: "保存成功!",
           });
+          // 成功后跳转页面
+          this.$router.push({ path: "/login" });
+          // 将用户名、手机号、密码封装为一个对象传递出去
+          let obj = {
+            userNaem: this.names,
+            userTelephone: this.phones,
+            userPassword: this.password,
+          };
+          this.$store.commit("userAdd", obj);
         })
         .catch(() => {
           this.$message({
@@ -341,6 +407,10 @@ export default {
     // let regInput = reactive({
     // });
     // return{regInput};
+  },
+  mounted() {
+    // 页面加载完毕后调用一次函数
+    Registerjs.verification(this.verification);
   },
 };
 </script>

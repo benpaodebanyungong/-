@@ -13,13 +13,25 @@
               </li></router-link
             >
             <li>
-              <span :style="{ color: '#666' }">购买前请</span>
-              <router-link to="/login">
-                <span class="style-orange"> 登录 </span></router-link
-              >
-              <router-link to="/register"
-                ><span class="style-orange">免费注册</span></router-link
-              >
+              <div v-show="!$store.state.isUser">
+                <span :style="{ color: '#666' }">购买前请</span>
+                <router-link to="/login">
+                  <span class="style-orange"> 登录 </span></router-link
+                >
+                <router-link to="/register"
+                  ><span class="style-orange">免费注册</span></router-link
+                >
+              </div>
+              <!-- 用户中心 -->
+              <div v-show="$store.state.isUser">
+                <a href="javascript:;"
+                  ><i
+                    class="el-icon-user-solid"
+                    :style="{ color: '#ff8000' }"
+                  ></i>
+                  帅气的华&nbsp;</a
+                ><a href="javascript:;" @click="isQuit">退出</a>
+              </div>
             </li>
           </div>
           <div class="fr">
@@ -195,6 +207,29 @@ export default {
         type: "success",
         confirmButtonClass: "confirmButtonClass",
       }).catch((action) => {});
+    },
+    isQuit() {
+      this.$confirm("退出登入, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.$message({
+            type: "success",
+            message: "退出成功!",
+          });
+          // 成功后跳转页面
+          this.$router.push({ path: "/login" });
+          // 显示为初始界面
+          this.$store.state.isUser = false;
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消退出",
+          });
+        });
     },
   },
   setup() {},

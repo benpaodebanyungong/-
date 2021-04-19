@@ -46,6 +46,7 @@
                       prefix-icon="el-icon-s-goods"
                       v-model="password"
                       @blur="isPsw"
+                      oninput="value = value.replace( /[\u4E00-\u9FA5]/g,'')"
                       show-password
                     ></el-input>
                     <br />
@@ -145,6 +146,40 @@ export default {
       } else {
         this.pswShow = false;
       }
+    },
+    // 登入按钮
+    submit() {
+      this.$confirm("保存信息, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          if (this.idName == "帅气的华" || this.idName == "13599721590") {
+            this.$message({
+              type: "success",
+              message: "登入成功!",
+            });
+            // 成功后跳转页面
+            this.$router.push({ path: "/" });
+            // 显示为用户
+            this.$store.state.isUser = true;
+          } else {
+            this.$message({
+              type: "error",
+              message: "账户名与密码不匹配，请重新输入",
+            });
+            // 清空输入框
+            this.idName = "";
+            this.password = "";
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消保存",
+          });
+        });
     },
   },
 };
