@@ -1,0 +1,165 @@
+.order {
+  width: 1200px;
+  margin: 0 auto;
+}
+.orderHead {
+  width: 1200px;
+}
+.orderCenter > .title {
+  height: 50px;
+  line-height: 50px;
+  font-size: 12px;
+}
+.orderCenter > .title > tr {
+  float: right;
+  padding-right: 5px;
+}
+.orderCenter > .title > tr td:nth-child(1) {
+  width: 267px;
+  padding-left: 75px;
+}
+.orderCenter > .title > tr td:nth-child(2) {
+  width: 212px;
+}
+.orderCenter > .title > tr td:nth-child(3) {
+  width: 130px;
+}
+.orderCenter > .title > tr td:nth-child(4) {
+  width: 134px;
+  padding-left: 36px;
+}
+.orderCenter > .title > tr td:nth-child(5) {
+  width: 130px;
+}
+.orderCenter > .title > tr td:nth-child(6) {
+  width: 109px;
+}
+.orderCenter > .center {
+  width: 1200px;
+  /* overflow: hidden; */
+}
+.orderCenter > .center > .el_checkbox_group {
+  float: left;
+  width: 80px;
+  padding: 10px 0;
+}
+.orderCenter > .center .el_checkbox {
+  height: 82px;
+  width: 50px;
+  padding: 20px 0 20px 30px;
+}
+.orderCenter > .center .cmdtRight {
+  float: left;
+  width: 1110px;
+  padding: 10px 0;
+}
+.orderCenter > .center > .cmdtRight ul {
+  height: 82px;
+  padding: 20px 0;
+}
+.orderCenter > .center > .cmdtRight ul li {
+  float: left;
+  font-size: 12px;
+}
+.orderCenter > .center > .cmdtRight ul li .small {
+  width: 80px;
+  height: 80px;
+}
+.orderCenter > .center > .cmdtRight ul li .big {
+  position: absolute;
+  top: -140px;
+  left: 90px;
+  width: 250px;
+  height: 250px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.orderCenter > .center > .cmdtRight ul li .big img {
+  width: 240px;
+  height: 240px;
+  margin: 5px;
+}
+.orderCenter > .center > .cmdtRight ul li:nth-child(1) {
+  width: 80px;
+  position: relative;
+}
+.orderCenter > .center > .cmdtRight ul li:nth-child(2) {
+  width: 226px;
+  padding-right: 45px;
+  margin-left: 10px;
+}
+.orderCenter > .center > .cmdtRight ul li .payment {
+  margin-top: 30px;
+}
+.orderCenter > .center > .cmdtRight ul li .payment img {
+  width: 16px;
+  height: 16px;
+  float: left;
+  margin-right: 5px;
+}
+.orderCenter > .center > .cmdtRight ul li .payment img:nth-child(1) {
+  height: 11px;
+  padding-top: 3px;
+}
+.orderCenter > .center > .cmdtRight ul li:nth-child(3) {
+  width: 172px;
+  padding-right: 40px;
+}
+.orderCenter > .center > .cmdtRight ul li:nth-child(4) {
+  width: 130px;
+}
+.orderCenter > .center > .cmdtRight ul li:nth-child(5) {
+  width: 125px;
+  padding-left: 45px;
+}
+.orderCenter > .center > .cmdtRight ul li:nth-child(5) p {
+  width: 100px;
+  margin-top: 5px;
+  text-align: center;
+}
+.orderCenter > .center > .cmdtRight ul li:nth-child(6) {
+  width: 130px;
+}
+.orderCenter > .center > .cmdtRight ul li:nth-child(7) {
+  width: 105px;
+}
+.orderCenter > .center > .cmdtRight ul li:nth-child(7) p {
+  margin-bottom: 5px;
+}
+.orderBottom {
+  width: 1200px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 12px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.orderBottom > a {
+  margin-left: 20px;
+}
+.checkAll {
+  padding-left: 15px;
+}
+/* 订单为空 */
+.orderNone {
+  width: 1200px;
+  height: 300px;
+  margin: 20px auto 30px;
+}
+.orderNone .ps {
+  width: 700px;
+  height: 90px;
+  background: url(../assets/imgs/box_N.jpg) no-repeat 280px 39px;
+  padding: 88px 0 100px 500px;
+}
+.orderNone > .ps p {
+  font-size: 12px;
+}
+.orderNone > .ps p:nth-child(1) {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

@@ -36,7 +36,7 @@
     </div>
     <div class="shoppingCar" v-show="isShow">
       <div class="carHead">
-        <h4>全部商品99</h4>
+        <h4>全部商品{{ $store.state.carNum }}</h4>
         <div class="right">
           已选商品（不含运费）：<span class="style-red">{{
             comsumption.toFixed(2)
@@ -206,7 +206,6 @@
 </template>
   
 <script>
-import LoginVue from "../../../../web前端/Vue/vue-router-dev/examples/auth-flow/components/Login.vue";
 import Search from "../components/Search.vue";
 export default {
   components: { Search },

@@ -1,0 +1,40 @@
+#personal {
+  height: 61px;
+  background-color: #ff8000;
+}
+.personalNav {
+  width: 1200px;
+  height: 37px;
+  padding: 12px 0;
+  margin: 0 auto;
+  position: relative;
+}
+.personalNav > .pLogo {
+  float: left;
+}
+.personalNav > .pLogo > img {
+  height: 37px;
+  width: 137px;
+}
+.personalNav .pContent {
+  float: left;
+  margin-left: 50px;
+}
+.personalNav .pContent a {
+  font-size: 14px;
+  line-height: 37px;
+  padding: 0 25px;
+  color: white;
+}
+
+.OrShopcar {
+  position: absolute;
+  top: 15px;
+  right: 64px;
+  width: 132px;
+  height: 34px;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  line-height: 32px;
+  text-align: center;
+}
