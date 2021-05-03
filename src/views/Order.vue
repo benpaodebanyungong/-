@@ -10,10 +10,10 @@
           text-color="#000000"
           active-text-color="#ff8000"
         >
-          <el-menu-item index="1">所有订单2</el-menu-item>
+          <el-menu-item index="1">所有订单3</el-menu-item>
           <el-menu-item index="2">待付款</el-menu-item>
           <el-menu-item index="3">待发货</el-menu-item>
-          <el-menu-item index="4">待收货2</el-menu-item>
+          <el-menu-item index="4">待收货3</el-menu-item>
           <el-menu-item index="5">待评价</el-menu-item>
         </el-menu>
       </div>
@@ -251,7 +251,7 @@ export default {
       }
     },
     del(index) {
-      this.$confirm("确定要删除这些宝贝吗?", "！该操作不可逆", {
+      this.$confirm("确定要删除已完成订单?", "！该操作不可逆", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         confirmButtonClass: "confirmButtonClass",
