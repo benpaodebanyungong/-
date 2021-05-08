@@ -35,9 +35,7 @@
             </li>
           </div>
           <div class="fr">
-            <router-link to="/order" target="_blank"
-              ><li>我的订单</li></router-link
-            >
+            <router-link to="/order"><li>我的订单</li></router-link>
             <li class="spacer"></li>
             <li>
               <a href="javsscript:;"

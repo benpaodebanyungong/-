@@ -88,9 +88,16 @@
   width: 226px;
   padding-right: 45px;
   margin-left: 10px;
+  position: relative;
+}
+.orderCenter > .center > .cmdtRight ul li .type {
+  margin-top: 4px;
+  color: #666;
 }
 .orderCenter > .center > .cmdtRight ul li .payment {
-  margin-top: 30px;
+  position: absolute;
+  top: 66px;
+  left: 0;
 }
 .orderCenter > .center > .cmdtRight ul li .payment img {
   width: 16px;

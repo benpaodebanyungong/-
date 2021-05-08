@@ -46,7 +46,7 @@ export default createStore({
         content:
           "Apple iPhone 6s（A1700）64G玫瑰金色 移动通信电信4G手机",
         type: "选择：玫瑰金 全网通 256G 官方标配",
-        orderNUmber: '34712634295237',
+        orderNumber: '34712634295237',
         orderTime: '2021年04月28日',
         num:1,
         total:6049.9,
@@ -56,22 +56,37 @@ export default createStore({
         content:
           "百草味精制猪肉脯零食特产小吃靖江特色风味肉干肉片网红休闲食品",
         type: "口味：精制猪肉脯155g（原味）",
-        orderNUmber: '90732946736542',
+        orderNumber: '90732946736542',
         orderTime: '2021年05月02日',
         num:2,
         total:6049.9,
       },
     ],
     isUser:false,
+    isCarNone: false,
+    isCarShow: true,
+    isOrderNone: false,
+    isOrderShow: true,
   },
   mutations: {
     commodiseAdd(state,obj){
       state.commodise.push(obj);
       state.carNum = state.commodise.length;
+      if(state.isCarNone != false && state.isCarShow != true){
+        state.isCarNone = false;
+        state.isCarShow = true;
+      }
     },
     userAdd(state,obj){
       state.user.push(obj);
       console.log(state.user);
+    },
+    orderAdd(state,obj){
+      state.order.push(obj);
+      if(state.isOrderNone != false && state.isOrderShow != true){
+        state.isOrderNone = false;
+        state.isOrderShow = true;
+      }
     }
   },
   actions: {

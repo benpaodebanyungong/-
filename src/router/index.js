@@ -6,6 +6,7 @@ import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import Phones from '../views/Phones.vue'
 import Apple from '../views/Apple.vue'
+import payment from '../views/payment.vue'
 
 const routes = [
   {
@@ -47,6 +48,11 @@ const routes = [
     path:'/apple',
     name:'Apple',
     component:Apple,
+  },
+  {
+    path:'/payment',
+    name:'payment',
+    component:payment,
   }
 ]
 

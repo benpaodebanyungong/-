@@ -139,7 +139,11 @@
               <el-button type="danger" @click="carAdd" :disabled="isbuy"
                 >加入购物车</el-button
               >
-              <el-button type="danger" :disabled="isbuy">立即购买</el-button>
+              <router-link to="/payment">
+                <el-button type="danger" @click="orderAdd" :disabled="isbuy"
+                  >立即购买</el-button
+                ></router-link
+              >
             </div>
           </div>
         </div>
@@ -378,6 +382,34 @@ export default {
         duration: 1500,
         showClose: true,
       });
+    },
+    // 加入订单时间
+    orderAdd() {
+      let date = new Date();
+      let year = date.getFullYear(); // 返回当前日期的年
+      let month = date.getMonth() + 1; // 月份 返回的月份小1个月
+      month = month < 10 ? "0" + month : month;
+      let dates = date.getDate(); // 返回的是几号
+      dates = dates < 10 ? "0" + dates : dates;
+      let obj = {
+        img: require("../assets/imgs/s3.png"),
+        content: "Apple iPhone 11 64G 白色 移动联通电信4G全网通手机",
+        type:
+          "选择：" +
+          this.colorName +
+          " " +
+          this.versionName +
+          " " +
+          this.memoryName +
+          " " +
+          this.typeName,
+        orderNumber: "78645876342837",
+        orderTime: `${year}年${month}月${dates}日`,
+        num: this.cmdtNum,
+        total:
+          this.worth + this.colorW + this.versionW + this.memoryW + this.typeW,
+      };
+      this.$store.commit("orderAdd", obj);
     },
   },
   setup() {

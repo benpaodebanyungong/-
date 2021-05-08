@@ -1,7 +1,7 @@
 <template>
   <div id="shoppingCar">
     <search></search>
-    <div class="cmdtNone" v-show="isNone">
+    <div class="cmdtNone" v-show="$store.state.isCarNone">
       <!-- 面包导航栏 -->
       <div class="nav">
         <div class="nav_left">
@@ -34,7 +34,7 @@
         </p>
       </div>
     </div>
-    <div class="shoppingCar" v-show="isShow">
+    <div class="shoppingCar" v-show="$store.state.isCarShow">
       <div class="carHead">
         <h4>全部商品{{ $store.state.carNum }}</h4>
         <div class="right">
@@ -42,8 +42,14 @@
             comsumption.toFixed(2)
           }}</span
           >&nbsp;
-          <el-button size="mini" type="danger" :disabled="isAble"
-            >结算</el-button
+          <router-link to="/payment"
+            ><el-button
+              size="mini"
+              type="danger"
+              @click="orderAdd"
+              :disabled="isAble"
+              >结算</el-button
+            ></router-link
           >
         </div>
       </div>
@@ -181,11 +187,14 @@
         >
         <tr class="tr2">
           <td>
-            <el-button
-              type="danger"
-              :disabled="isAble"
-              :style="{ width: '100px', height: '50.4px' }"
-              >结算</el-button
+            <router-link to="/payment">
+              <el-button
+                type="danger"
+                :disabled="isAble"
+                @click="orderAdd"
+                :style="{ width: '100px', height: '50.4px' }"
+                >结算</el-button
+              ></router-link
             >
           </td>
           <td>{{ comsumption.toFixed(2) }}</td>
@@ -218,8 +227,6 @@ export default {
       big: -1,
       allDiabled: false,
       isNever: false,
-      isNone: false,
-      isShow: true,
       isBackout: true,
       isAble: true,
       // 商品数据
@@ -335,8 +342,8 @@ export default {
           this.checkedcommodise = [];
           // 内容全部删除过后 显示购物车为空组件
           if (this.$store.state.commodise.length === 0) {
-            this.isNone = true;
-            this.isShow = false;
+            this.$store.state.isCarNone = true;
+            this.$store.state.isCarShow = false;
           }
           // 价格清空
           this.comsumption = 0;
@@ -469,6 +476,47 @@ export default {
           confirmButtonClass: "confirmButtonClass",
         }
       ).catch((action) => {});
+    },
+    orderAdd() {
+      let date = new Date();
+      let year = date.getFullYear(); // 返回当前日期的年
+      let month = date.getMonth() + 1; // 月份 返回的月份小1个月
+      month = month < 10 ? "0" + month : month;
+      let dates = date.getDate(); // 返回的是几号
+      dates = dates < 10 ? "0" + dates : dates;
+      if (this.chooseArr.length == 1) {
+        let obj = {
+          img: this.$store.state.commodise[this.chooseArr[0] - 1].img,
+          content: this.$store.state.commodise[this.chooseArr[0] - 1].content,
+          type: this.$store.state.commodise[this.chooseArr[0] - 1].type,
+          orderNumber: "420572803758454",
+          orderTime: `${year}年${month}月${dates}日`,
+          num: this.$store.state.commodise[this.chooseArr[0] - 1].num,
+          total: this.comsumption,
+        };
+        // 删除购物车中的数据
+        this.$store.state.commodise.splice(this.chooseArr[0] - 1, 1);
+        // 更改购物车的数量显示
+        this.$store.state.carNum = this.$store.state.commodise.length;
+        this.$store.commit("orderAdd", obj);
+      } else {
+        let obj = {
+          img: require("../assets/imgs/logo.png"),
+          content: `该订单一共存在${this.chooseArr.length}个商品`,
+          type: `该订单存在${this.chooseArr.length}个商品类型`,
+          orderNumber: "420572803758454",
+          orderTime: `${year}年${month}月${dates}日`,
+          num: this.cmdtNum,
+          total: this.comsumption,
+        };
+        // 删除购物车中的数据
+        for (let i = 0; i < this.chooseArr.length; i++) {
+          this.$store.state.commodise.splice(this.chooseArr[i] - 1, 1);
+        }
+        // 更改购物车的数量显示
+        this.$store.state.carNum = this.$store.state.commodise.length;
+        this.$store.commit("orderAdd", obj);
+      }
     },
   },
 };
