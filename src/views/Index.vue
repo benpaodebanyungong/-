@@ -27,10 +27,9 @@
           <ul>
             <li>
               <img src="../assets/imgs/1.png" alt="" />
-              <router-link to="/phones">手机</router-link> /<a
-                href="javascript:;"
-                >数码</a
-              >/<a href="javascript:;">通信</a>
+              <router-link to="/phones">手机</router-link> /
+              <router-link to="/test">测试</router-link>
+              /<a href="javascript:;">通信</a>
             </li>
             <li>
               <img src="../assets/imgs/2.png" alt="" /><a href="javascript:;"
@@ -472,7 +471,7 @@ export default {
       minute: "记",
       second: "时",
     });
-    let inputTime = +new Date("2021-5-09 20:00:00"); // 返回的是用户输入时间总的毫秒数
+    let inputTime = +new Date("2021-5-10 12:00:00"); // 返回的是用户输入时间总的毫秒数
     countDown(); // 我们先调用一次这个函数，防止第一次刷新页面有空白
     // 2. 开启定时器
     let clear = setInterval(countDown, 1000); //过了一秒钟后回调函数
