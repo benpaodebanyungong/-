@@ -29,7 +29,7 @@
               <img src="../assets/imgs/1.png" alt="" />
               <router-link to="/phones">手机</router-link> /
               <router-link to="/test">测试</router-link>
-              /<a href="javascript:;">通信</a>
+              /<router-link to="/clock">时钟</router-link>
             </li>
             <li>
               <img src="../assets/imgs/2.png" alt="" /><a href="javascript:;"

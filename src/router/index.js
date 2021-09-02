@@ -53,10 +53,16 @@ const routes = [
     path:'/payment',
     name:'payment',
     component:payment,
-  },{
+  },
+  {
     path:'/test',
     name:'test',
     component:() => import('../views/Test.vue')
+  },
+  {
+    path:'/clock',
+    name:'clock',
+    component:()=>import("../views/clock.vue")
   }
 ]
 
